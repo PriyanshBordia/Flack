@@ -11,6 +11,10 @@
     	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
     	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
 
+        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
+
+        <script src = "{{ url_for ('static', filename = 'styles/js/index.js') }}" charset="utf-8"></script>
+
 		<style media="screen">
 			.navbar-brand
 			{
@@ -27,8 +31,10 @@
         <!-- Icon -->
         <link rel="icon" href = "{{ url_for('static', filename='icons/icons8-foam-bubbles-96.png') }}">
         <title> | Flack</title>
+
     </head>
-    <body style="background-image: url( {{ url_for('static', filename='images/people4.png') }} )">
+    <body style="background-image: url( {{ url_for('static', filename='images/people5.png') }} )">
+
         <nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation">
             <a class="navbar-brand" href="#"> Flack </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -39,23 +45,14 @@
                 <div class="navbar-nav ml-auto">
                     <a class=" nav-item nav-link dropdown-toggle mr-4" href="{{ url_for('create_user') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ url_for('static', filename='icons/icons8-user-100.png') }}" alt=""></a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ url_for('avatar_view', username=username)}}">Profile</a>
+                        <a class="dropdown-item" href="{{ url_for('avatar_view', name=username)}}">Profile</a>
                         <a class="dropdown-item" href="#"></a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Sign Out</a>
+                        <a class="dropdown-item" href="#">Create Avatar</a>
                     </div>
                 </div>
             </div>
         </nav>
 
-        <div class="row">
-            <div class="col-md-6 justify-content-center align-center">
-                left side
-            </div>
-
-            <div class="col-md-6 justify-content-center align-center">
-                right side
-            </div>
-        </div>
     </body>
 </html>
