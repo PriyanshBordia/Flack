@@ -21,6 +21,9 @@ def index():
 
 @app.route("/create_user", methods=["POST", "GET"])
 def create_user():
+	if request.method == "GET":
+		return render_template("error.html", message="Please, submit the form to use the chat room!!")
+
 	try:
 		username = str(request.form.get("username"))
 	except KeyError:
@@ -31,7 +34,7 @@ def create_user():
 		return render_template("cubical.html", username=username)
 
 	else:
-		return render_template("index.html", message="Already a User in our records!")
+		return render_template("error.html", message="Already a User in our records!")
 
 
 @app.route("/create_room")

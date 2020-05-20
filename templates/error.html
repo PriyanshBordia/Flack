@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+    <head>
+        <meta charset="utf-8">
+
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+        <style media="screen">
+            .alert
+            {
+                padding: 20px;
+                max-width: 600px;
+                margin: auto;
+                text-align: center;
+                font-size: 24px !important;
+            }
+        </style>
+        <link rel="icon" href = "{{ url_for('static', filename='icons/icons8-alert-80.png') }}">
+        <title> | Error</title>
+    </head>
+    <body>
+        <div class="alert alert-danger" role="alert">
+            {{ message }}
+        </div>
+    </body>
+</html>

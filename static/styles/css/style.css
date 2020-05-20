@@ -13,13 +13,6 @@
     font-size: 20px !important;
 }
 
-.container {
-    border: 1px solid black;
-    left: 50%;
-    top: 50%;
-    teansform: (-50%, -50%);
-}
-
 
 footer
 {

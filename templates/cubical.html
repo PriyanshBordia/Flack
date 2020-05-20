@@ -1,28 +1,11 @@
-<!DOCTYPE html>
-<html lang="en" dir="ltr">
-    <head>
-        <!-- Required meta tags -->
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+{% extends "layout.html" %}
 
-		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-    	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-    	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+{% block head %}
+    <script src="{{ url_for ('static', filename = 'styles/js/cubical.js') }}" charset="utf-8"></script>
+{% endblock %}
 
-        <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
-
-        <script src="{{ url_for ('static', filename = 'styles/js/cubical.js') }}" charset="utf-8"></script>
-
-        <link rel="stylesheet" href="{{ url_for ('static', filename='styles/css/style.css')}}">
-
-        <!-- Icon -->
-        <link rel="icon" href = "{{ url_for('static', filename='icons/icons8-foam-bubbles-96.png') }}">
-        <title> | Flack</title>
-
-    </head>
-    <body>
+{% block body %}
+        <!-- TODO: Nav bar for brand and user details dropdown -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation">
             <a class="navbar-brand" href="#"> Flack </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,8 +13,8 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav ml-auto mb-0">
-                    <a class=" nav-item nav-link dropdown-toggle mr-4" href="{{ url_for('create_user') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ url_for('static', filename='icons/icons8-user-100.png') }}" alt=""></a>
+                <div class="navbar-nav ml-auto">
+                    <a class=" nav-item nav-link dropdown-toggle mr-3" href="{{ url_for('create_user') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ url_for('static', filename='icons/icons8-user-100.png') }}" alt=""></a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ url_for('avatar_view', name=username)}}">Profile</a>
                         <a class="dropdown-item" href="#"></a>
@@ -42,31 +25,32 @@
             </div>
         </nav>
 
-        <div class="container">
-            <div class="row justify-content center">
-                <div class="col-lg-4 col-md-5 col-sm-6 col-8 pt-3 pb-3 mr-2 ml-auto">
+        <div class="container container-fluid mt-4">
+            <div class="row justify-content-center align-center">
+                <div class="col-lg-4 col-md-5 col-sm-6 col-8 mt-auto mb-2 mr-2 ml-auto">
                     <form id="form_create_channel" method="post">
                         <input id="channel_name" type="text" name="channel_name" autocomplete="off" autofocus placeholder="Name the Channel">
                         <button class="create_channel btn btn-outline-primary">Create Channel</button>
                     </form>
                     <ul id="channels-list">
+                        {% for channel in channels %}
+                            <li>{{ channel }}</li>
+                        {% endfor %}
                     </ul>
                 </div>
             </div>
-            <div class="row">
+            <div class="row justify-content-center align-center">
                 <div class="col-lg-4 col-md-5 col-sm-6 col-8 pt-3 pb-3 ml-2 mr-auto">
-
-                    <div class="fixed-bottom">
+                    <ul id="messages">
+                    </ul>
+                    <!-- <div class="fixed-bottom"> -->
                         <form id="form_send_new_msg" method="post">
                             <input id="new_msg" type="text" name="text_message" autocomplete="off" autofocus placeholder="Type">
                             <button class="send_new_msg btn btn-outline-warning">Send</button>
                         </form>
-                    </div>
+                    <!-- </div> -->
                 </div>
             </div>
         </div>
 
-
-
-    </body>
-</html>
+{% endblock %}
