@@ -13,28 +13,16 @@
 
         <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/socket.io/1.3.6/socket.io.min.js"></script>
 
-        <script src = "{{ url_for ('static', filename = 'styles/js/index.js') }}" charset="utf-8"></script>
+        <script src="{{ url_for ('static', filename = 'styles/js/cubical.js') }}" charset="utf-8"></script>
 
-		<style media="screen">
-			.navbar-brand
-			{
-			    font-size: 24px !important;
-			}
-			.nav-item
-			{
-			    font-size: 20px !important;
-			}
-		</style>
-
-        <script src="{{ url_for ('static', filename = 'style/js/index.js') }}" charset="utf-8"></script>
+        <link rel="stylesheet" href="{{ url_for ('static', filename='styles/css/style.css')}}">
 
         <!-- Icon -->
         <link rel="icon" href = "{{ url_for('static', filename='icons/icons8-foam-bubbles-96.png') }}">
         <title> | Flack</title>
 
     </head>
-    <body style="background-image: url( {{ url_for('static', filename='images/people5.png') }} )">
-
+    <body>
         <nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation">
             <a class="navbar-brand" href="#"> Flack </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -42,7 +30,7 @@
             </button>
 
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav ml-auto">
+                <div class="navbar-nav ml-auto mb-0">
                     <a class=" nav-item nav-link dropdown-toggle mr-4" href="{{ url_for('create_user') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ url_for('static', filename='icons/icons8-user-100.png') }}" alt=""></a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ url_for('avatar_view', name=username)}}">Profile</a>
@@ -53,6 +41,32 @@
                 </div>
             </div>
         </nav>
+
+        <div class="container">
+            <div class="row justify-content center">
+                <div class="col-lg-4 col-md-5 col-sm-6 col-8 pt-3 pb-3 mr-2 ml-auto">
+                    <form id="form_create_channel" method="post">
+                        <input id="channel_name" type="text" name="channel_name" autocomplete="off" autofocus placeholder="Name the Channel">
+                        <button class="create_channel btn btn-outline-primary">Create Channel</button>
+                    </form>
+                    <ul id="channels-list">
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-lg-4 col-md-5 col-sm-6 col-8 pt-3 pb-3 ml-2 mr-auto">
+
+                    <div class="fixed-bottom">
+                        <form id="form_send_new_msg" method="post">
+                            <input id="new_msg" type="text" name="text_message" autocomplete="off" autofocus placeholder="Type">
+                            <button class="send_new_msg btn btn-outline-warning">Send</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
 
     </body>
 </html>
