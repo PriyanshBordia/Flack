@@ -4,13 +4,14 @@ import time
 from flask import Flask, render_template, json, jsonify, request
 from flask_socketio import SocketIO, emit
 
+from collections import defaultdict
 from util import Create_Room
 
 app = Flask(__name__)
 socketio = SocketIO(app)
 
 # Global Variables
-Chat_Rooms = []
+Chat_Rooms = defaultdict(list)
 User_Names = []
 messages = {}
 
@@ -21,9 +22,6 @@ def index():
 
 @app.route("/create_user", methods=["POST", "GET"])
 def create_user():
-	if request.method == "GET":
-		return render_template("error.html", message="Please, submit the form to use the chat room!!")
-
 	try:
 		username = str(request.form.get("username"))
 	except KeyError:
@@ -48,7 +46,7 @@ def create_room():
 		return "Room name already taken!"
 
 	else:
-		Chat_Rooms.append(room_name)
+		Chat_Rooms[room_name] = []
 		Create_Room(room_name)
 
 	return render_template("cubical.html", channels=Chat_Rooms)

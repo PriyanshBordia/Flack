@@ -1,25 +1,33 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    channels = []
+
     document.querySelector('.create_channel').disabled = true;
 
-    document.querySelector('.send_new_msg').disabled = true;
+    document.querySelector('.new_msg').disabled = true;
 
     var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port)
 
     socket.on('connect', () => {
 
         // Functionality on click on any channel name
-        // document.querySelectorAll('#channels').forEach(channel => {
-        //     channel.onclick = () => {
-        //         const channel_name = document.querySelector('#channel').name;
-        //
-        //     };
-        // });
+        document.querySelectorAll('#channels').forEach(channel => {
+            channel.onclick = () => {
+                const request = new XMLHttpRequest();
+                request.open('GET', `/${channel}`);
+
+                request.onload = () => {
+                    const response = request.responseText;;
+                    document.querySelector('#channel');
+
+                };
+            };
+        });
 
 // Channel Creation
         document.querySelector('#channel_name').onkeyup = () => {
 
-            if (document.querySelector('#channel_name').value.length > 0)
+            if (document.querySelector('#channel_name').value.length > 0 && !document.querySelector('#channel_name').vaue === ' ')
                 document.querySelector('.create_channel').disabled = false;
             else
                 document.querySelector('.create_channel').disabled = true;
@@ -32,7 +40,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const li = document.createElement('li');
             li.innerHTML = New_Channel;
 
-            document.querySelector('#channels').append(li);
+            document.querySelector('#channels-list').append(li);
 
             document.querySelector('.create_channel').disabled = true;
 
@@ -43,29 +51,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // Messages
-        document.querySelector('#new_msg').onkeyup = () => {
+        document.querySelector('#message_text').onkeyup = () => {
 
-            if (document.querySelector('#new_msg').value.length > 0)
-                document.querySelector('.send_new_msg').disabled = false;
+            if (document.querySelector('#message_text').value.length > 0)
+                document.querySelector('.new_msg').disabled = false;
             else
-                document.querySelector('.send_new_msg').disabled = true;
+                document.querySelector('.new_msg').disabled = true;
         };
 
-        document.querySelector('#form_send_new_msg').onsubmit = () => {
+        document.querySelector('#form_new_msg').onsubmit = () => {
 
-            const New_message = document.querySelector('#new_msg').value;
+            const New_message = document.querySelector('#message_text').value;
 
             const li = document.createElement('li');
             li.innerHTML = New_message;
 
-            document.querySelector('#messages').append(li);
+            document.querySelector('#messages-list').append(li);
 
-            document.querySelector('.send_new_msg').disabled = true;
+            document.querySelector('.new_msg').disabled = true;
 
-            document.querySelector('#new_msg').value = '';
+            document.querySelector('#message_text').value = '';
 
             return false;
-
         };
+
     });
 });

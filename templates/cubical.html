@@ -26,11 +26,11 @@
         </nav>
 
         <div class="container container-fluid mt-4">
-            <div class="row justify-content-center align-center">
-                <div class="col-lg-4 col-md-5 col-sm-6 col-8 mt-auto mb-2 mr-2 ml-auto">
-                    <form id="form_create_channel" method="post">
-                        <input id="channel_name" type="text" name="channel_name" autocomplete="off" autofocus placeholder="Name the Channel">
-                        <button class="create_channel btn btn-outline-primary">Create Channel</button>
+            <div class="row justify-content-center ml-2 mr-auto mt-2">
+                <div class="col-lg-4 col-md-5 col-sm-6 col-8 ">
+                    <form id="form_create_channel">
+                        <input id="channel_name" type="text" name="channel_name" autocomplete="off" autofocus placeholder="Channel Name">
+                        <button class="create_channel btn btn-outline-primary ml-sm-2">Create</button>
                     </form>
                     <ul id="channels-list">
                         {% for channel in channels %}
@@ -39,16 +39,16 @@
                     </ul>
                 </div>
             </div>
-            <div class="row justify-content-center align-center">
-                <div class="col-lg-4 col-md-5 col-sm-6 col-8 pt-3 pb-3 ml-2 mr-auto">
-                    <ul id="messages">
+            <div class="row justify-content-center ml-auto mr-2 mb-2">
+                <div class="col-lg-4 col-md-5 col-sm-6 col-8 ">
+                    <ul id="messages-list">
                     </ul>
-                    <!-- <div class="fixed-bottom"> -->
-                        <form id="form_send_new_msg" method="post">
-                            <input id="new_msg" type="text" name="text_message" autocomplete="off" autofocus placeholder="Type">
-                            <button class="send_new_msg btn btn-outline-warning">Send</button>
+                    <div class="fixed-bottom">
+                        <form id="form_new_msg">
+                            <input id="message_text" type="text" name="text_message" autocomplete="off" autofocus placeholder="Type a message">
+                            <button class="new_msg btn btn-outline-warning">Send</button>
                         </form>
-                    <!-- </div> -->
+                    </div>
                 </div>
             </div>
         </div>

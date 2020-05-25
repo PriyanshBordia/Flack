@@ -1,9 +1,6 @@
-.chatroom-list {
-  height: 90%;
-  width: 30%;
-}
 
-.navbar-brand {
+.navbar-brand
+{
     font-size: 24px !important;
     font-family: monospace;
 }
@@ -12,7 +9,6 @@
 {
     font-size: 20px !important;
 }
-
 
 footer
 {

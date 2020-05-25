@@ -4,13 +4,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         socket.on('connect', () => {
 
-
+            return false;
+        });
 
         socket.on('display messages', data => {
 
             document.querySelector('#').innerHTML = data.channel;
 
             return false;
-
         });
 });
