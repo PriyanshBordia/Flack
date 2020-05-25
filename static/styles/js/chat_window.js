@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
 // Channel Creation
         document.querySelector('#channel_name').onkeyup = () => {
 
-            if (document.querySelector('#channel_name').value.length > 0 && !document.querySelector('#channel_name').vaue === ' ')
+            if (document.querySelector('#channel_name').value.length > 0)
                 document.querySelector('.create_channel').disabled = false;
             else
                 document.querySelector('.create_channel').disabled = true;
@@ -48,7 +48,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
             return false;
         };
-
 
 // Messages
         document.querySelector('#message_text').onkeyup = () => {
