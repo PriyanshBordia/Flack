@@ -10,30 +10,21 @@
             <li>{{ channel }}</li>
         {% endfor %}
 
-        <div class="container container-fluid mt-4">
-            <div class="row ml-2 mr-auto mt-2">
-                    <form id="form_create_channel" class="form-control">
-                        <input id="channel_name" class="form-control" type="text" name="channel_name" autocomplete="off" autofocus placeholder="Channel Name">
-                        <button class="create_channel btn btn-outline-primary form-control l-sm-2">Create</button>
-                    </form>
-                    <ul id="channels-list">
-                        {% for channel in channels %}
-                            <li>{{ channel }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
-            </div>
-            <div class="row ml-auto mr-2 mb-2">
-                    <ul id="messages-list">
-                    </ul>
-                    <!-- <div class="fixed-bottom"> -->
-                        <form id="form_new_msg">
-                            <input id="message_text" type="text" name="text_message" autocomplete="off" autofocus placeholder="Type a message">
-                            <button class="new_msg btn btn-outline-warning">Send</button>
-                        </form>
-                    <!-- </div> -->
-                </div>
-            </div>
-        </div>
+        <form id="form_create_channel" class="form-inline ml-4 mt-3">
+            <input id="channel_name" class="form-control" type="text" name="channel_name" autocomplete="off" autofocus placeholder="Channel Name">
+            <button class="create_channel btn btn-outline-primary form-control ml-3">Create</button>
+        </form>
+        <ul id="channels-list">
+            {% for channel in channels %}
+                <li>{{ channel }}</li>
+            {% endfor %}
+        </ul>
+
+        <form id="form_new_msg" class="form-inline ml-4 mt-3">
+            <input id="message_text" class="form-control" type="text" name="text_message" autocomplete="off" autofocus placeholder="Type a message">
+            <button class="new_msg form-control btn btn-outline-warning ml-3">Send</button>
+        </form>
+        <ul id="messages-list">
+        </ul>
 
 {% endblock %}

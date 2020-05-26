@@ -22,3 +22,47 @@ style="background-image: url( {{ url_for('static', filename='images/people5.png'
             </div>
         </div>
     </nav>
+
+    <div class="container container-fluid mt-4">
+        <div class="row ml-2 mr-auto mt-2">
+
+            </div>
+        </div>
+
+        # if username not in User_Names:
+        # 	User_Names.append(username)
+        #
+        # else:
+        # 	return render_template("error.html", message="Already a User in our records!")
+
+
+        # @app.route("/create_room")
+        # def create_room():
+        # 	try:
+        # 		room_name = str(request.form.get("room_name"))
+        # 	except KeyError:
+        # 		return "Enter a valid name for chat room!"
+        #
+        # 	if room_name in Chat_Rooms:
+        # 		return "Room name already taken!"
+        #
+        # 	else:
+        # 		Channels.append(room_name)
+        #
+        # 	return render_template("chat_window.html", channels=Channels)
+        #
+        #
+        # @socketio.on("send message")
+        # def text_message(data):
+        # 	messages.append(data["message"])
+        # 	emit("display messages", messages, broadcast=True)
+        #
+        #
+        # # various User details
+        # @app.route("/avatar_view/<string: name>", methods=["GET", "POST"])
+        # def avatar_view(name):
+        # 	return render_template("profile.html", name=name)
+        #
+        #
+        # @app.route("/", methods=["GET", "POST"])
+        # def ():
