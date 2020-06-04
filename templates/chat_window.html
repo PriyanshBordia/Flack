@@ -6,10 +6,10 @@
 
 {% block body %}
         <form id="form_create_channel" class="form-inline ml-4 mt-3">
-            <input id="channel_name" class="form-control" type="text" name="channel_name" autocomplete="off" autofocus placeholder="Channel Name">
+            <input id="channel_name" class="form-control" type="text" name="channel_name" autocomplete="off" autofocus placeholder="Channel Name" required/>
             <button class="create_channel btn btn-outline-primary form-control ml-3">Create</button>
         </form>
-        
+
         <ul id="channels-list">
             {% for channel in channels %}
                 <li>{{ channel }}</li>
@@ -17,7 +17,7 @@
         </ul>
 
         <form id="form_new_msg" class="form-inline ml-4 mt-3">
-            <input id="message_text" class="form-control" type="text" name="text_message" autocomplete="off" autofocus placeholder="Type a message">
+            <input id="message_text" class="form-control" type="text" name="text_message" autocomplete="off" autofocus placeholder="Type a message" required/>
             <button class="new_msg form-control btn btn-outline-warning ml-3">Send</button>
         </form>
 

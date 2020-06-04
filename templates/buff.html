@@ -52,10 +52,7 @@ style="background-image: url( {{ url_for('static', filename='images/people5.png'
         # 	return render_template("chat_window.html", channels=Channels)
         #
         #
-        # @socketio.on("send message")
-        # def text_message(data):
-        # 	messages.append(data["message"])
-        # 	emit("display messages", messages, broadcast=True)
+    
         #
         #
         # # various User details
@@ -66,3 +63,10 @@ style="background-image: url( {{ url_for('static', filename='images/people5.png'
         #
         # @app.route("/", methods=["GET", "POST"])
         # def ():
+
+        onst request = new XMLHttpRequest();
+        request.open('GET', `/${channel}`);
+
+        request.onload = () => {
+            const response = request.responseText;;
+            document.querySelector('#channel')

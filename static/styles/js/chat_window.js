@@ -13,31 +13,25 @@ document.addEventListener('DOMContentLoaded', () => {
 		// Functionality on click on any channel name
 		document.querySelectorAll('#channels').forEach(channel => {
 			channel.onclick = () => {
-				const request = new XMLHttpRequest();
-				request.open('GET', `/${channel}`);
 
-				request.onload = () => {
-					const response = request.responseText;;
-					document.querySelector('#channel');
+				const selection = channel.dataset.name;
+				socket.emit('view_channel', {'selection' : selection});
 
 				};
-			};
-		});
+			});
 
 // Channel Creation
 		document.querySelector('#channel_name').onkeyup = () => {
 
-			if (document.querySelector('#channel_name').value.length > 0)
-			{
-				var x = (document.querySelector('#channel_name').value).trim();
-				alert(`${x}`);
-
-				if (x !== '')
+			if (document.querySelector('#channel_name').value.length > 0 && (document.querySelector('#channel_name').value).trim() !== '')
 					document.querySelector('.create_channel').disabled = false;
-			}
 
 			else
+			{
 				document.querySelector('.create_channel').disabled = true;
+				return false;
+			}
+
 		};
 
 		document.querySelector('#form_create_channel').onsubmit = () => {
@@ -59,10 +53,14 @@ document.addEventListener('DOMContentLoaded', () => {
 // Messages
 		document.querySelector('#message_text').onkeyup = () => {
 
-			if (document.querySelector('#message_text').value.length > 0)
-				document.querySelector('.new_msg').disabled = false;
+			if (document.querySelector('#message_text').value.length > 0 && (document.querySelector('#message_text').value).trim() !== '')
+					document.querySelector('.new_msg').disabled = false;
+
 			else
+			{
 				document.querySelector('.new_msg').disabled = true;
+				return false;
+			}
 		};
 
 		document.querySelector('#form_new_msg').onsubmit = () => {
@@ -80,6 +78,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			return false;
 		};
+
+	});
+
+	socket.on('view_chat_room_msgs', data => {
+		document.querySelector('#messages-list').innerHTML += data.messages;
 
 	});
 });
