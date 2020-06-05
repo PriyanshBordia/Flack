@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-
+	
 	var channels = [];
 
 	if (!localStorage.getItem('channels'))
@@ -9,14 +9,17 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	else
 	{
-		channels = JSON.parse(localStorage.getItem('channels'));
+		var channels = JSON.parse(localStorage.getItem('channels'));
 
 		for (let i = 0; i < channels.length; i++)
 		{
-			const li = document.createElement('li');
-			li.innerHTML = channels[i];
+			const button = document.createElement('button');
+			button.innerHTML = channels[i];
+			
+			button.setAttribute('class', 'channel-button');
+			button.setAttribute('data-name', channels[i]);
 
-			document.querySelector('#channels-list').append(li);
+			document.querySelector('#channels-list').append(button);
 		}
 	}
 
@@ -31,13 +34,26 @@ document.addEventListener('DOMContentLoaded', () => {
 	{
 		messages = JSON.parse(localStorage.getItem('messages'));
 
-		// for (let i = 0; i < (messages["Channel_name"]).length; i++)
-		// {
-		// 	const li = document.createElement('li');
-		// 	li.innerHTML = messages["Channel_name"][i];
+		document.querySelector('#messages-list').innerHTML = '';
 
-		// 	document.querySelector('#messages-list').append(li);
-		// }
+		if (localStorage.getItem('current_channel') !== 'null')
+		{
+			Channel_name = localStorage.getItem('current_channel');
+
+			for (let i = 0; i < (messages[Channel_name]).length; i++)
+			{
+				const li = document.createElement('li');
+				li.innerHTML = messages[Channel_name][i];
+
+				document.querySelector('#messages-list').append(li);
+			}
+		}
+	}
+
+
+	if (!localStorage.getItem('current_channel'))
+	{
+		localStorage.setItem('current_channel', null);
 	}
 
 
@@ -51,21 +67,24 @@ document.addEventListener('DOMContentLoaded', () => {
 	socket.on('connect', () => {
 
 	// Functionality on click on any channel name
-		document.querySelectorAll('#channels').forEach(channel => {
-			channel.onclick = () => {
+		document.querySelectorAll('.channel-button').forEach(function(button) {
 
-				const selection = channel.dataset.name;
-				// socket.emit('view_channel', {'selection' : selection});
+			button.onclick = function () {
 
-				for (let i = messages[selection].length; i >= 0; i--)
+				document.querySelector('#messages-list').innerHTML = '';
+
+				const selection = button.dataset.name;
+
+				localStorage.setItem('current_channel', selection);
+
+				for (let i = messages[selection].length - 1; i >= 0; i--)
 				{
 					const li = document.createElement('li');
 					li.innerHTML = messages[selection][i];
 			
 					document.querySelector('#messages-list').append(li);
-				}
-
-			};
+				}	
+			};		
 		});
 
 	// Channel Creation
@@ -90,14 +109,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			if (!channels.includes(New_Channel))
 			{
-				const li = document.createElement('li');
-				li.innerHTML = New_Channel;
-				li.style.color = 'orange'; 
-				
-				document.querySelector('#channels-list').append(li);
-
 				const button = document.createElement('button');
-				button.innerHTML = 'Click';
+				button.innerHTML = New_Channel;
+
+				button.setAttribute('class', 'channel-button');
 				button.setAttribute('data-name', New_Channel);
 				
 				document.querySelector('#channels-list').append(button);
@@ -107,6 +122,10 @@ document.addEventListener('DOMContentLoaded', () => {
 
 				messages[New_Channel] = [];
 				localStorage.setItem('messages', JSON.stringify(messages));
+
+				localStorage.setItem('current_channel', New_Channel);
+
+				document.querySelector('#messages-list').innerHTML = '';
 			}
 
 			else
@@ -136,7 +155,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		document.querySelector('#form_new_msg').onsubmit = () => {
 
-			const Channel_name = document.querySelector('.channels-list').dataset.name;
+			const Channel_name = localStorage.getItem('current_channel');
 
 			const New_message = (document.querySelector('#message_text').value).trim();
 
@@ -170,4 +189,22 @@ document.addEventListener('DOMContentLoaded', () => {
 	// 	document.querySelector('#messages-list').innerHTML += data.messages;
 
 	// });
+
+	function Today_Date()
+	{
+		var currentDate = new Date();
+
+		var date = currentDate.getDate();
+		var month = currentDate.getMonth() + 1; //Be careful! January is 0 not 1
+		var year = currentDate.getFullYear();
+
+		return (date + '/' + month + '/' + year);
+	};
+
+	function Msg_Time()
+	{
+		var currentDate = new Date();
+
+		var time = ((currentDate.getTime() / 1000 ) % 24);
+	};
 });

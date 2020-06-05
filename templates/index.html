@@ -6,24 +6,26 @@
 
 {% block body %}
 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light ">
-            <a class="navbar-brand" href="#"> Flack </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
+        <div style="background-image: url({{ url_for('static', filename='images/people2.png') }})">
+            <nav class="navbar navbar-expand-lg navbar-light bg-light ">
+                <a class="navbar-brand" href="#"> Flack </a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
 
-            <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-                <div class="navbar-nav mr-4 ml-auto">
-                    <form class="form-inline my-2 my-lg-2" action="{{ url_for('create_user') }}" method="post">
-                        <input class="form-control mr-sm-2" type="text" name="username" autocomplete="off" placeholder="Avatar Name" aria-label="Search">
-                        <input class="form-control btn btn-outline-primary my-2 my-sm-0" type="submit" value="Create Avatar">
-                    </form>
+                <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                    <div class="navbar-nav mr-4 ml-auto">
+                        <form id="create_new_user" class="form-inline my-2 my-lg-2" action="{{ url_for('create_user') }}" method="post">
+                            <input id="username"class="form-control mr-sm-2" type="text" name="username" autocomplete="off" placeholder="Avatar Name" aria-label="Search">
+                            <input class="form-control btn btn-outline-info my-2 my-sm-0" type="submit" value="Create Avatar">
+                        </form>
+                    </div>
                 </div>
-            </div>
-        </nav>
+            </nav>
 
-        <footer class="button fixed-bottom">
-            &copy; 2020, Andrømed Flack
-        </footer>
+            <footer class="button fixed-bottom">
+                &copy; 2020, Andrømed Flack
+            </footer>
+        </div>
 
 {% endblock %}

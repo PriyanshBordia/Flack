@@ -30,7 +30,8 @@ def create_user():
 	except KeyError:
 		return "Enter a valid name!"
 
-	return render_template("chat_window.html", username=username, channels=Channels)
+	if username not in User_Names:
+		return render_template("chat_window.html", username=username)
 
 
 @app.route("/create_chatroom", methods = ["POST", "GET"])
@@ -49,6 +50,7 @@ def create_chatroom():
 
 	else:
 		raise Exception ("Already a channel!")
+
 
 @socketio.on("create channel")
 def create_channel(data):

@@ -1,27 +1,6 @@
-style="background-image: url( {{ url_for('static', filename='images/people5.png') }} )"
+href="{{ url_for('create_user') }}"
+href="{{ url_for('avatar_view', name=username)}}"
 
-<body  style="background-image: url({{ url_for('static', filename='images/people2.png') }})">
-
-
-    <!-- TODO: Nav bar for brand and user details dropdown -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation">
-        <a class="navbar-brand" href="#"> Flack </a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-        </button>
-
-        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav ml-auto">
-                <a class=" nav-item nav-link dropdown-toggle mr-3" href="{{ url_for('create_user') }}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="{{ url_for('static', filename='icons/icons8-user-100.png') }}" alt=""></a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="{{ url_for('avatar_view', name=username)}}">Profile</a>
-                    <a class="dropdown-item" href="#"></a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Create Avatar</a>
-                </div>
-            </div>
-        </div>
-    </nav>
 
     <div class="container container-fluid mt-4">
         <div class="row ml-2 mr-auto mt-2">
@@ -52,7 +31,7 @@ style="background-image: url( {{ url_for('static', filename='images/people5.png'
         # 	return render_template("chat_window.html", channels=Channels)
         #
         #
-    
+
         #
         #
         # # various User details
