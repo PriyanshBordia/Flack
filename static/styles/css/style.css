@@ -10,6 +10,29 @@
     font-size: 20px !important;
 }
 
+.channel-list-window
+{
+    border: 1px solid black;
+
+}
+
+.channel-list-window li
+{
+    border: 1px solid black;
+}
+
+#channel-list
+{
+    margin: 20px;
+    padding: 20px;
+    text-align: center;
+}
+
+.chat-room-window
+{
+    border: 1px solid black;
+}
+
 footer
 {
     text-decoration: none !important;

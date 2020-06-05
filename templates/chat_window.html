@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-    <body style="background-image: url( {{ url_for('static', filename='images/people5.png') }} )">
+    
         <!-- TODO: Nav bar for brand and user details dropdown -->
         <nav class="navbar navbar-expand-lg navbar-light bg-light" role="navigation">
             <a class="navbar-brand" href="#"> Flack </a>
@@ -26,8 +26,9 @@
             </div>
         </nav>
 
-        <div class = "modal-body row mt-3">
-            <div class="col-md-6 text-center">
+    <div class="container container-fluid mt-2 mb-2">
+        <div class = "modal-body row justify-content-center">
+            <div class="col-md-6 channel-list-window text-center mt-3">
                 <form id="form_create_channel" class="form-inline ml-4 mt-3">
                     <input id="channel_name" class="form-control" type="text" name="channel_name" autocomplete="off" autofocus placeholder="Channel Name" required/>
                     <button class="create_channel btn btn-outline-primary form-control ml-3"> Create </button>
@@ -36,7 +37,7 @@
                 </ul>
             </div>
 
-            <div class="col-md-6 text-center">
+            <div class="col-md-6 chat-room-window text-center mt-3">
                 <form id="form_new_msg" class="form-inline mr-3 mb-3 mt-auto">
                     <input id="message_text" class="form-control" type="text" name="text_message" autocomplete="off" autofocus placeholder="Type a message" required/>
                     <button class="new_msg form-control btn btn-outline-warning ml-3">Send</button>
@@ -54,7 +55,6 @@
                 </ul>
             </div>
         </div>
-    </body>
-
+    </div>
 
 {% endblock %}

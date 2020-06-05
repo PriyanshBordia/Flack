@@ -16,8 +16,9 @@ document.addEventListener('DOMContentLoaded', () => {
 			const button = document.createElement('button');
 			button.innerHTML = channels[i];
 			
-			button.setAttribute('class', 'channel-button');
+			button.setAttribute('class', 'channel-button btn btn-outline-success mr-2 mt-2 pt-2');
 			button.setAttribute('data-name', channels[i]);
+
 
 			document.querySelector('#channels-list').append(button);
 		}
@@ -44,6 +45,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			{
 				const li = document.createElement('li');
 				li.innerHTML = messages[Channel_name][i];
+				li.setAttribute('class', 'alert alert-info');
 
 				document.querySelector('#messages-list').append(li);
 			}
@@ -81,7 +83,8 @@ document.addEventListener('DOMContentLoaded', () => {
 				{
 					const li = document.createElement('li');
 					li.innerHTML = messages[selection][i];
-			
+					li.setAttribute('class', 'alert alert-info');
+					
 					document.querySelector('#messages-list').append(li);
 				}	
 			};		
@@ -161,6 +164,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			const li = document.createElement('li');
 			li.innerHTML = New_message;
+			li.setAttribute('class', 'alert alert-info');
 
 			document.querySelector('#messages-list').append(li);
 
