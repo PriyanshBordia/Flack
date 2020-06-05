@@ -28,8 +28,8 @@
 
     <div class="container container-fluid mt-2 mb-2">
         <div class = "modal-body row justify-content-center">
-            <div class="col-md-6 channel-list-window text-center mt-3">
-                <form id="form_create_channel" class="form-inline ml-4 mt-3">
+            <div class="col-lg-5 col-md-6 col-sm-8 col-8 channel-list-window text-center mt-3">
+                <form id="form_create_channel" class="form-inline ml-2 mt-2 mb-auto mr-auto">
                     <input id="channel_name" class="form-control" type="text" name="channel_name" autocomplete="off" autofocus placeholder="Channel Name" required/>
                     <button class="create_channel btn btn-outline-primary form-control ml-3"> Create </button>
                 </form>
@@ -37,21 +37,15 @@
                 </ul>
             </div>
 
-            <div class="col-md-6 chat-room-window text-center mt-3">
-                <form id="form_new_msg" class="form-inline mr-3 mb-3 mt-auto">
-                    <input id="message_text" class="form-control" type="text" name="text_message" autocomplete="off" autofocus placeholder="Type a message" required/>
-                    <button class="new_msg form-control btn btn-outline-warning ml-3">Send</button>
-                </form>
+            <div class="col-lg-5 col-md-6 col-sm-8 col-8 chat-room-window text-center mt-4">
+                <div class="fixed-sticky">
+                    <form id="form_new_msg" class="form-inline mr-2 mb-2 mt-2 ml-auto">
+                        <input id="message_text" class="form-control" type="text" name="text_message" autocomplete="off" autofocus placeholder="Type a message" required/>
+                        <button class="new_msg form-control btn btn-outline-warning ml-3">Send</button>
+                    </form>
+                </div>
 
                 <ul id="messages-list">
-                    <div class="card">
-                        <div class="card-body">
-                            <!-- Message Text -->
-                        </div>
-                        <div class="card-footer">
-                            <!-- Timestamp -->
-                        </div>
-                    </div>
                 </ul>
             </div>
         </div>

@@ -115,7 +115,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				const button = document.createElement('button');
 				button.innerHTML = New_Channel;
 
-				button.setAttribute('class', 'channel-button');
+				button.setAttribute('class', 'channel-button btn btn-outline-success mr-2 mt-2 pt-2');
 				button.setAttribute('data-name', New_Channel);
 				
 				document.querySelector('#channels-list').append(button);
