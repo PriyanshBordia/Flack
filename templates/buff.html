@@ -1,6 +1,8 @@
 href="{{ url_for('create_user') }}"
 href="{{ url_for('avatar_view', name=username)}}"
 
+socket.emit('view_channel', {'selection': selection});
+
 <body style="background-image: url( {{ url_for('static', filename='images/people5.png') }} )">
 
     <div class="container container-fluid mt-4">

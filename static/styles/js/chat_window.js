@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-	
+
 	var channels = [];
 
 	if (!localStorage.getItem('channels'))
@@ -15,10 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
 		{
 			const button = document.createElement('button');
 			button.innerHTML = channels[i];
-			
+
 			button.setAttribute('class', 'channel-button btn btn-outline-success mr-2 mt-2 pt-2');
 			button.setAttribute('data-name', channels[i]);
-
 
 			document.querySelector('#channels-list').append(button);
 		}
@@ -41,7 +40,9 @@ document.addEventListener('DOMContentLoaded', () => {
 		{
 			Channel_name = localStorage.getItem('current_channel');
 
-			for (let i = 0; i < (messages[Channel_name]).length; i++)
+			document.querySelector('#chat-room-name').innerHTML = Channel_name;
+
+			for (let i = (messages[Channel_name]).length - 1; i >= 0; i++)
 			{
 				const li = document.createElement('li');
 				li.innerHTML = messages[Channel_name][i];
@@ -58,12 +59,11 @@ document.addEventListener('DOMContentLoaded', () => {
 		localStorage.setItem('current_channel', null);
 	}
 
-
 	document.querySelector('.create_channel').disabled = true;
 
 	document.querySelector('.new_msg').disabled = true;
 
-	
+
 	var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port)
 
 	socket.on('connect', () => {
@@ -79,15 +79,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
 				localStorage.setItem('current_channel', selection);
 
+				document.querySelector('#chat-room-name').innerHTML = selection;
+
 				for (let i = messages[selection].length - 1; i >= 0; i--)
 				{
 					const li = document.createElement('li');
 					li.innerHTML = messages[selection][i];
+
 					li.setAttribute('class', 'alert alert-info');
-					
+
 					document.querySelector('#messages-list').append(li);
-				}	
-			};		
+				}
+			};
 		});
 
 	// Channel Creation
@@ -117,7 +120,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 				button.setAttribute('class', 'channel-button btn btn-outline-success mr-2 mt-2 pt-2');
 				button.setAttribute('data-name', New_Channel);
-				
+
 				document.querySelector('#channels-list').append(button);
 
 				channels.push(New_Channel);
@@ -162,36 +165,60 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			const New_message = (document.querySelector('#message_text').value).trim();
 
-			const li = document.createElement('li');
-			li.innerHTML = New_message;
-			li.setAttribute('class', 'alert alert-info');
+			socket.emit('send message', {'Channel_name': Channel_name, 'New_message': New_message});
 
-			document.querySelector('#messages-list').append(li);
-
-			document.querySelector('.new_msg').disabled = true;
-
-			document.querySelector('#message_text').value = '';
-
-			if (!Array.isArray(messages[Channel_name]))
-			{
-				messages[Channel_name] = [];
-			}
-
-			else
-			{
-				messages[Channel_name].push(New_message);
-			}
-
-			localStorage.setItem('messages', JSON.stringify(messages));
-
-			return false;
 		};
 
 	});
 
-	// socket.on('view_chat_room_msgs', data => {
-	// 	document.querySelector('#messages-list').innerHTML += data.messages;
 
+	socket.on('display message', data => {
+
+		const Channel_name = data.selection;
+
+		const New_message = data.message;
+
+		const li = document.createElement('li');
+		li.innerHTML = New_message;
+
+		li.setAttribute('class', 'alert alert-info');
+
+		document.querySelector('#messages-list').append(li);
+
+		document.querySelector('.new_msg').disabled = true;
+
+		document.querySelector('#message_text').value = '';
+
+		if (!Array.isArray(messages[Channel_name]))
+		{
+			messages[Channel_name] = [];
+		}
+
+		else
+		{
+			messages[Channel_name].push(New_message);
+		}
+
+		localStorage.setItem('messages', JSON.stringify(messages));
+
+		return false;
+
+	});
+
+	// socket.on('view_chat_room_msgs', data => {
+
+	// 	const selection = data.selection;
+
+	// 	const messages = data.messages;
+
+	// 	for (let i = messages[selection].length - 1; i >= 0; i--)
+	// 	{
+	// 		const li = document.createElement('li');
+	// 		li.innerHTML = messages[selection][i];
+	// 		li.setAttribute('class', 'alert alert-info');
+
+	// 		document.querySelector('#messages-list').append(li);
+	// 	}
 	// });
 
 	function Today_Date()

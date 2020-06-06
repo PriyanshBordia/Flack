@@ -61,13 +61,21 @@ def create_channel(data):
 
 	emit("view channel", {"selection": channel_name})
 
+
 @socketio.on("view channel")
 def view_channel(data):
 	selection = data["selection"]
-	emit("view_chat_room_msgs", {"selection": selection}, broadcast=True)
+	messages = Chat_Rooms[selection] 
+
+	emit("view_chat_room_msgs", {"selection": selection, 'messages': messages}, broadcast=True)
 
 
 @socketio.on("send message")
 def text_message(data):
-	messages.append(data["message"])
-	emit("display messages", messages, broadcast=True)
+
+	selection = data["Channel_name"]
+	message = data["New_message"]
+
+	Chat_Rooms[selection].append(message)
+
+	emit("display message", {'selection': selection, 'message': message}, broadcast=True)
