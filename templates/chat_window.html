@@ -34,6 +34,9 @@
                     <button class="create_channel btn btn-outline-primary form-control ml-3"> Create </button>
                 </form>
                 <ul id="channels-list">
+                    <div class='demoScroll sc3'>
+                        <div class='h600'></div>
+                    </div>
                     {% for channel in channels %}
                         <li> {{ channel }} </li>
                     {% endfor %}
@@ -41,19 +44,22 @@
             </div>
 
             <div class="col-lg-5 col-md-6 col-sm-8 col-6 chat-room-window text-center mt-4">
-                <div class="card">
+                <div class="card mt-3">
                     <div class="card-header form-inline">
-                        <h4 id="chat-room-name">
-                        </h4>
-                        <svg class="bi bi-trash mr-2 ml-auto" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
-                            <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
-                        </svg>
+                        <h4 id="chat-room-name"></h4>
+                        <div id="clear_chat_history" class="mr-2 ml-auto">
+                            <svg class="bi bi-trash" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>
+                                <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>
+                            </svg>
+                        </div>
                     </div>
+
                     <div class="card-body">
                         <ul id="messages-list">
                         </ul>
                     </div>
+
                     <div class="card-footer">
                         <form id="form_new_msg" class="form-inline mr-2 mb-2 mt-2 ml-auto">
                             <input id="message_text" class="form-control rounded-pill" type="text" name="text_message" autocomplete="off" autofocus placeholder="Type a message" size="40" required/>

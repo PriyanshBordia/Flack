@@ -167,6 +167,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			socket.emit('send message', {'Channel_name': Channel_name, 'New_message': New_message});
 
+			return false;
+		};
+
+		document.querySelector('#clear_chat_history').onclick = () => {
+
+			if (localStorage.getItem('current_channel') !== 'null')
+			{
+				Channel_name = localStorage.getItem('#current_channel');
+
+				document.querySelector('#messages-list').innerHTML = '';
+
+				messages[Channel_name] = [];
+
+				localStorage.setItem('messages', JSON.stringify(messages));
+			}
+
+			return false;
 		};
 
 	});
@@ -205,21 +222,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	});
 
-	// socket.on('view_chat_room_msgs', data => {
+	socket.on('view chat room msgs', data => {
 
-	// 	const selection = data.selection;
+		const selection = data.selection;
 
-	// 	const messages = data.messages;
+		const messages = data.messages;
 
-	// 	for (let i = messages[selection].length - 1; i >= 0; i--)
-	// 	{
-	// 		const li = document.createElement('li');
-	// 		li.innerHTML = messages[selection][i];
-	// 		li.setAttribute('class', 'alert alert-info');
+		for (let i = messages[selection].length - 1; i >= 0; i--)
+		{
+			const li = document.createElement('li');
+			li.innerHTML = messages[selection][i];
+			li.setAttribute('class', 'alert alert-info');
 
-	// 		document.querySelector('#messages-list').append(li);
-	// 	}
-	// });
+			document.querySelector('#messages-list').append(li);
+		}
+	});
 
 	function Today_Date()
 	{

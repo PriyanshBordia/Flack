@@ -16,17 +16,43 @@
 
 }
 
-.channel-list-window li
+.channel-list-window > li
 {
     border: 2px solid black;
 }
 
-#channel-list
-{
+#channel-list {
     margin: 20px;
     padding: 20px;
     text-align: center;
 }
+
+/* Scroll Bar */
+demoScroll {
+  height: 300px;
+  overflow-y: auto;
+  width: 50px;
+}
+
+.h600 {
+  height: 600px;
+}
+
+.sc3::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+}
+
+.sc3::-webkit-scrollbar-track {
+  background-color: transparent;
+  border-radius: 10px;
+}
+
+.sc3::-webkit-scrollbar-thumb {
+  background-color: rgba(0, 0, 0, 0.4);
+  border-radius: 10px;
+}
+
 
 .chat-room-window
 {
@@ -49,8 +75,8 @@ footer
     transition-duration: 0.4s;
 }
 
-.button:hover
+footer: hover
 {
-    background-color: none;
     color: rgb(120,81,169);
+    background-color: white;
 }
