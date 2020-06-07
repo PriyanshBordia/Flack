@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			const button = document.createElement('button');
 			button.innerHTML = channels[i];
 
-			button.setAttribute('class', 'channel-button btn btn-outline-success mr-2 mt-2 pt-2');
+			button.className = 'channel-button btn btn-outline-success mr-2 mt-2 pt-2';
 			button.setAttribute('data-name', channels[i]);
 
 			document.querySelector('#channels-list').append(button);
@@ -46,7 +46,7 @@ document.addEventListener('DOMContentLoaded', () => {
 			{
 				const li = document.createElement('li');
 				li.innerHTML = messages[Channel_name][i];
-				li.setAttribute('class', 'alert alert-info');
+				li.className = 'alert alert-info';
 
 				document.querySelector('#messages-list').append(li);
 			}
@@ -63,8 +63,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	document.querySelector('.new_msg').disabled = true;
 
+	window.onpopstate = e => {
+		const data = e.state;
+		document.title = data.title;
 
-	var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port)
+		show_messages(document.title);
+	};
+
+
+	var socket = io.connect(location.protocol + '//' + document.domain + ':' + location.port);
 
 	socket.on('connect', () => {
 
@@ -73,23 +80,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 			button.onclick = function () {
 
-				document.querySelector('#messages-list').innerHTML = '';
-
-				const selection = button.dataset.name;
-
-				localStorage.setItem('current_channel', selection);
-
-				document.querySelector('#chat-room-name').innerHTML = selection;
-
-				for (let i = messages[selection].length - 1; i >= 0; i--)
-				{
-					const li = document.createElement('li');
-					li.innerHTML = messages[selection][i];
-
-					li.setAttribute('class', 'alert alert-info');
-
-					document.querySelector('#messages-list').append(li);
-				}
+				show_messages(button.dataset.name);
 			};
 		});
 
@@ -197,8 +188,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		const li = document.createElement('li');
 		li.innerHTML = New_message;
-
-		li.setAttribute('class', 'alert alert-info');
+		li.className = 'alert alert-info';
 
 		document.querySelector('#messages-list').append(li);
 
@@ -221,7 +211,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		return false;
 
 	});
-
+ 
 	socket.on('view chat room msgs', data => {
 
 		const selection = data.selection;
@@ -232,11 +222,43 @@ document.addEventListener('DOMContentLoaded', () => {
 		{
 			const li = document.createElement('li');
 			li.innerHTML = messages[selection][i];
-			li.setAttribute('class', 'alert alert-info');
+			li.className = 'alert alert-info';
 
 			document.querySelector('#messages-list').append(li);
 		}
 	});
+
+
+	function show_messages(name) {
+
+		document.querySelector('#messages-list').innerHTML = '';
+
+		localStorage.setItem('current_channel', name);
+
+		document.querySelector('#chat-room-name').innerHTML = name;
+
+		const request = new XMLHttpRequest();
+		request.open = ('GET', `/${name}`);
+
+		request.onload => () {
+			const response = request.responseText;
+		};
+
+		
+		// for (let i = messages[name].length - 1; i >= 0; i--)
+		// {
+		// 	const li = document.createElement('li');
+		// 	li.innerHTML = messages[name][i];
+
+		// 	li.setAttribute('class', 'alert alert-info');
+
+		// 	document.querySelector('#messages-list').append(li);
+		// }
+
+		document.title = name;
+
+		history.pushState({'title':name, 'text': response}, name, name);
+	};
 
 	function Today_Date()
 	{
@@ -255,4 +277,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		var time = ((currentDate.getTime() / 1000 ) % 24);
 	};
+
 });
