@@ -31,7 +31,7 @@ def create_user():
 		return "Enter a valid name!"
 
 	if username not in User_Names:
-		return render_template("chat_window.html", username=username)
+		return render_template("chat_window.html")
 
 
 @app.route("/create_chatroom", methods = ["POST", "GET"])
@@ -42,24 +42,39 @@ def create_chatroom():
 
 	try:
 		channel_name = str(request.form.get("channel_name"))
+
 	except KeyError:
 		return "Invalid Rooom Name!"
 
 	if channel_name not in Channels:
 		Channels.append(channel_name)
+		Chat_Rooms[channel_name] = []
 
-	else:
+	else: 
 		raise Exception ("Already a channel!")
+
+
+@app.route("/view_mesages/<string:room_name>", methods=["POST", "GET"])
+def view_mesages():
+
+	if room_name not in Channels :
+		return "Invalid Room Name"
+
+	else :
+		return jsonify(Chat_Rooms[room_name])
 
 
 @socketio.on("create channel")
 def create_channel(data):
+	channel_name = data["channel_name"]
+
 	global Channels
 
 	if channel_name not in Channels:
 		Channels.append(channel_name)
 
-	emit("view channel", {"selection": channel_name})
+	emit("channel created", {"selection": channel_name}, broadcast=True)
+	# return True;
 
 
 @socketio.on("view channel")

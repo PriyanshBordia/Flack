@@ -1,82 +1,105 @@
 
 .navbar-brand
 {
-    font-size: 24px !important;
-    font-family: monospace;
+	font-size: 24px !important;
+	font-family: monospace;
 }
 
 .nav-item
 {
-    font-size: 20px !important;
+	font-size: 20px !important;
 }
 
 .channel-list-window
 {
-    border: 1px solid black;
+	border: 1px solid black;
 
 }
 
 .channel-list-window > li
 {
-    border: 2px solid black;
+	border: 2px solid black;
 }
 
-#channel-list {
-    margin: 20px;
-    padding: 20px;
-    text-align: center;
+#channel-list 
+{
+	margin: 20px;
+	padding: 20px;
+	text-align: center;
 }
 
 /* Scroll Bar */
-demoScroll {
-  height: 300px;
-  overflow-y: auto;
-  width: 50px;
+.demoScroll 
+{
+	height: 300px;
+	overflow-y: auto;
+	width: 50px;
 }
 
-.h600 {
-  height: 600px;
+.h600 
+{
+	height: 600px;
 }
 
-.sc3::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
+.sc3::-webkit-scrollbar 
+{
+	width: 10px;
+	height: 10px;
 }
 
-.sc3::-webkit-scrollbar-track {
-  background-color: transparent;
-  border-radius: 10px;
+.sc3::-webkit-scrollbar-track 
+{
+ 	background-color: transparent;
+  	border-radius: 10px;
 }
 
-.sc3::-webkit-scrollbar-thumb {
-  background-color: rgba(0, 0, 0, 0.4);
-  border-radius: 10px;
+.sc3::-webkit-scrollbar-thumb 
+{
+	background-color: rgba(0, 0, 0, 0.4);
+  	border-radius: 10px;
 }
 
 
 .chat-room-window
 {
-    border: 1px solid black;
+	border: 1px solid black;
+}
+
+.fa 
+{
+    color: white;
+    background: #1e2440;
+    border-radius: 50%;
+    cursor: pointer;
+    margin-top: 1rem;
+    float: right;
+    width: 2rem;
+    height: 2rem;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
 }
 
 footer
 {
-    text-decoration: none !important;
-    color: grey !important;
-    font-size: 18px;
-    text-align: center;
-    margin: 20px;
+	margin: 20px;
+	padding: 10px;
+	text-decoration: none !important;
+	color: grey !important;
+	text-align: center;
+	font-size: 18px;	
 }
 
 /*Hower Over Effect*/
 .button
 {
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
+	-webkit-transition-duration: 0.4s; /* Safari */
+	transition-duration: 0.4s;
 }
 
-footer: hover
+.button:hover
 {
-    color: rgb(120,81,169);
-    background-color: white;
+	cursor: pointer;
+	color: rgb(120,81,169);
+	background-color: white;
 }

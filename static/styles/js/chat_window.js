@@ -109,7 +109,7 @@ document.addEventListener('DOMContentLoaded', () => {
 				const button = document.createElement('button');
 				button.innerHTML = New_Channel;
 
-				button.setAttribute('class', 'channel-button btn btn-outline-success mr-2 mt-2 pt-2');
+				button.className = 'channel-button btn btn-outline-success mr-2 mt-2 pt-2';
 				button.setAttribute('data-name', New_Channel);
 
 				document.querySelector('#channels-list').append(button);
@@ -131,6 +131,9 @@ document.addEventListener('DOMContentLoaded', () => {
 			document.querySelector('.create_channel').disabled = true;
 
 			document.querySelector('#channel_name').value = '';
+
+			emit('create channel', {'channel_name': channel_name})
+
 
 			return false;
 		};
@@ -179,6 +182,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	});
 
+	// socket.on('channel created', data => {
+	// 	const Channel_name = data.selection;
+
+		
+	// });
 
 	socket.on('display message', data => {
 
@@ -240,10 +248,11 @@ document.addEventListener('DOMContentLoaded', () => {
 		const request = new XMLHttpRequest();
 		request.open = ('GET', `/${name}`);
 
-		request.onload => () {
+		request.onload = () =>  {
 			const response = request.responseText;
 		};
 
+		request.send();
 		
 		// for (let i = messages[name].length - 1; i >= 0; i--)
 		// {
@@ -277,5 +286,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
 		var time = ((currentDate.getTime() / 1000 ) % 24);
 	};
+
+	// Speech Recognition feature to add text
+	window.SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
+
+	// const synth = window.speechSynthesis;
+
+	const recognition = new SpeechRecognition();
+	const icon = document.querySelector('i.fa.fa-microphone')
+	
+	let paragraph = document.createElement('p');
+	let container = document.querySelector('.text-box');
+	container.appendChild(paragraph);
+	
+	const sound = document.querySelector('.sound');
+
+	icon.addEventListener('click', () => {
+	  sound.play();
+	  dictate();
+	});
 
 });
