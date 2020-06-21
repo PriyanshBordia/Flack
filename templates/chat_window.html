@@ -27,23 +27,20 @@
         </nav>
 
     <div class="container container-fluid mt-2 mb-2">
-        <div class = "row justify-content-center">
-            <div class="col-lg-5 col-md-6 col-sm-8 col-8 channel-list-window text-center mt-3">
+        <div class = "row justify-content-center border">
+            <div class="col-5 channel-list-window text-center mt-3 mb-3 ml-2 mr-auto">
                 <form id="form_create_channel" class="form-inline ml-2 mt-2 mb-auto mr-auto">
                     <input id="channel_name" class="form-control" type="text" name="channel_name" autocomplete="off" autofocus placeholder="Channel Name" required/>
                     <button class="create_channel btn btn-outline-primary form-control ml-3"> Create </button>
                 </form>
                 <ul id="channels-list">
-                    <div class='demoScroll sc3'>
-                        <div class='h600'></div>
-                    </div>
                     {% for channel in channels %}
                         <li> {{ channel }} </li>
                     {% endfor %}
                 </ul>
             </div>
 
-            <div class="col-lg-5 col-md-6 col-sm-8 col-6 chat-room-window text-center mt-4">
+            <div class="col-5 chat-room-window text-center mt-3 mb-3 mr-2 ml-auto">
                 <div class="card mt-3">
                     <div class="card-header form-inline">
                         <h4 id="chat-room-name"></h4>
@@ -57,7 +54,7 @@
 
                     <div class="card-body">
                         <ul id="messages-list">
-                            <div class="card"> 
+                            <div class="card">
                                 {% for message in messages %}
                                     <div clas="card-body">
                                         <li>{{ message }}</li>
@@ -73,16 +70,11 @@
                     <div class="card-footer">
                         <form id="form_new_msg" class="form-inline mr-2 mb-2 mt-2 ml-auto">
                             <input id="message_text" class="form-control rounded-pill" type="text" name="text_message" autocomplete="off" autofocus placeholder="Type a message" size="40" required/>
-                            <button class="new_msg form-control btn btn-outline-warning rounded-circle ml-2">
-                                <svg class="bi bi-chevron-double-right" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path fill-rule="evenodd" d="M3.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L9.293 8 3.646 2.354a.5.5 0 0 1 0-.708z"/>
-                                    <path fill-rule="evenodd" d="M7.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L13.293 8 7.646 2.354a.5.5 0 0 1 0-.708z"/>
-                                </svg>
-                            </button>
+                            <button class="new_msg form-control rounded-pill"><i class="fa fa-arrow fa-2x ml-3"></i></button>
                         </form>
-                        <i class="fa fa-microphone fa-2x ml-3"></i> 
+                        <i class="fa fa-microphone fa-2x mr-3"></i>
                     </div>
-                    <audio class="sound" src="{{ url_for('static', filename = 'sounds/chime.mp3') }}"></audio> 
+                    <audio class="sound" src="{{ url_for('static', filename = 'sounds/chime.mp3') }}"></audio>
                 </div>
             </div>
         </div>

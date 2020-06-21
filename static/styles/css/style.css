@@ -10,62 +10,69 @@
 	font-size: 20px !important;
 }
 
-.channel-list-window
+ .channel-list-window
 {
 	border: 1px solid black;
 
 }
-
+/*
 .channel-list-window > li
 {
 	border: 2px solid black;
 }
+*/
 
-#channel-list 
+#channels-list
 {
 	margin: 20px;
 	padding: 20px;
+	max-height: 300px;
 	text-align: center;
+	list-style: none;
+  	overflow: auto;
+	border-color: #7ecdef;
+	text-indent: 10px;
 }
-
-/* Scroll Bar */
-.demoScroll 
-{
-	height: 300px;
-	overflow-y: auto;
-	width: 50px;
-}
-
-.h600 
-{
-	height: 600px;
-}
-
-.sc3::-webkit-scrollbar 
-{
-	width: 10px;
-	height: 10px;
-}
-
-.sc3::-webkit-scrollbar-track 
-{
- 	background-color: transparent;
-  	border-radius: 10px;
-}
-
-.sc3::-webkit-scrollbar-thumb 
-{
-	background-color: rgba(0, 0, 0, 0.4);
-  	border-radius: 10px;
-}
-
 
 .chat-room-window
 {
 	border: 1px solid black;
 }
 
-.fa 
+
+/* Scroll Bar */
+.demoScroll
+{
+	height: 300px;
+	overflow-y: auto;
+	width: 50px;
+}
+
+.h600
+{
+	height: 600px;
+}
+
+.sc3::-webkit-scrollbar
+{
+	width: 10px;
+	height: 10px;
+}
+
+.sc3::-webkit-scrollbar-track
+{
+ 	background-color: transparent;
+  	border-radius: 10px;
+}
+
+.sc3::-webkit-scrollbar-thumb
+{
+	background-color: rgba(0, 0, 0, 0.4);
+  	border-radius: 10px;
+}
+
+/* Speech Recognition */
+.fa
 {
     color: white;
     background: #1e2440;
@@ -87,7 +94,7 @@ footer
 	text-decoration: none !important;
 	color: grey !important;
 	text-align: center;
-	font-size: 18px;	
+	font-size: 18px;
 }
 
 /*Hower Over Effect*/
@@ -100,6 +107,7 @@ footer
 .button:hover
 {
 	cursor: pointer;
-	color: rgb(120,81,169);
+	color: #7851a9;
+	/* rgb(120,81,169); */
 	background-color: white;
 }

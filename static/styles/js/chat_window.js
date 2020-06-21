@@ -185,7 +185,7 @@ document.addEventListener('DOMContentLoaded', () => {
 	// socket.on('channel created', data => {
 	// 	const Channel_name = data.selection;
 
-		
+
 	// });
 
 	socket.on('display message', data => {
@@ -219,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		return false;
 
 	});
- 
+
 	socket.on('view chat room msgs', data => {
 
 		const selection = data.selection;
@@ -253,7 +253,7 @@ document.addEventListener('DOMContentLoaded', () => {
 		};
 
 		request.send();
-		
+
 		// for (let i = messages[name].length - 1; i >= 0; i--)
 		// {
 		// 	const li = document.createElement('li');
@@ -294,11 +294,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
 	const recognition = new SpeechRecognition();
 	const icon = document.querySelector('i.fa.fa-microphone')
-	
+
 	let paragraph = document.createElement('p');
-	let container = document.querySelector('.text-box');
+	let container = document.querySelector('#channel_name');
 	container.appendChild(paragraph);
-	
+
 	const sound = document.querySelector('.sound');
 
 	icon.addEventListener('click', () => {
