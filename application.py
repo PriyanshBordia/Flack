@@ -1,5 +1,5 @@
 import os
-import time
+from datetime import datetime 
 import environ
 
 from flask import Flask, render_template, request, url_for, flash
@@ -71,7 +71,7 @@ def login():
 def register():
 
 	try:
-		username = str(request.form.get("username"))
+		email = str(request.form.get("email"))
 	except KeyError:
 		return "Enter a valid name!"
 
@@ -80,14 +80,19 @@ def register():
 	except KeyError:
 		return "Enter a valid name!"
 
-	if username and password:
-
+	if email and password:
+	
 		users = User.query.all()
+		username = email.split('@')[0]
 
 		if username not in users:
 			password = generate_password_hash(password)
-			user = User(username=username, password=password)
-			db.execute()
+			
+			user = User(username=username, password=password, email=email, active=datetime.now())
+			
+			db.session.add(user)
+			db.session.commit()
+			
 			return render_template("login.html")
 		else:
 			return render_template("error.html", message="User already exists.!! Try LogIn.")
