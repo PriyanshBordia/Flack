@@ -8,7 +8,9 @@ from collections import defaultdict
 from util import Create_Room
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'it\'s impossible to search the key for you at this moment.'
+
+app.config['SECRET_KEY'] = 'its-impossible-for-you-to-search-the-key-at-this-moment.'
+
 socketio = SocketIO(app)
 
 # Global Variables
@@ -97,5 +99,5 @@ def text_message(data):
 	emit("display message", {'selection': selection, 'message': message}, broadcast=True)
 
 if __name__ == "__main__":
-	# socketio.run(app)
-	app.run(debug=True, host="0.0.0.0")
+	socketio.run(app)
+	# app.run(debug=True, host="0.0.0.0")

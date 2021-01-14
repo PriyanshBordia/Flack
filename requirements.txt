@@ -10,6 +10,5 @@ python-engineio==3.12.1
 python-json-logger==0.1.11
 python-socketio==4.5.1
 requests==2.23.0
-validator==2.0.6
 Werkzeug==0.16.0
 
