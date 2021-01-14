@@ -1,3 +1,22 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+    <a class="navbar-brand" href="#"> Flack </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup"
+        aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+        <div class="navbar-nav mr-4 ml-auto">
+            <form id="create_new_user" class="form-inline my-2 my-lg-2" action="{{ url_for('create_user') }}"
+                method="post">
+                <input id="username" class="form-control mr-sm-2" type="text" name="username" autocomplete="off"
+                    placeholder="Avatar Name" aria-label="Search" size="30">
+                <input class="form-control btn btn-outline-info my-2 my-sm-0" type="submit" value="Create Avatar">
+            </form>
+        </div>
+    </div>
+</nav>
+
 href="{{ url_for('create_user') }}"
 href="{{ url_for('avatar_view', name=username)}}"
 
@@ -20,44 +39,6 @@ socket.emit('view_channel', {'selection': selection});
                         </div>
                     </div>
 
-        # if username not in User_Names:
-        # 	User_Names.append(username)
-        #
-        # else:
-        # 	return render_template("error.html", message="Already a User in our records!")
+       
 
-
-        # @app.route("/create_room")
-        # def create_room():
-        # 	try:
-        # 		room_name = str(request.form.get("room_name"))
-        # 	except KeyError:
-        # 		return "Enter a valid name for chat room!"
-        #
-        # 	if room_name in Chat_Rooms:
-        # 		return "Room name already taken!"
-        #
-        # 	else:
-        # 		Channels.append(room_name)
-        #
-        # 	return render_template("chat_window.html", channels=Channels)
-        #
-        #
-
-        #
-        #
-        # # various User details
-        # @app.route("/avatar_view/<string: name>", methods=["GET", "POST"])
-        # def avatar_view(name):
-        # 	return render_template("profile.html", name=name)
-        #
-        #
-        # @app.route("/", methods=["GET", "POST"])
-        # def ():
-
-        onst request = new XMLHttpRequest();
-        request.open('GET', `/${channel}`);
-
-        request.onload = () => {
-            const response = request.responseText;;
-            document.querySelector('#channel')
+        

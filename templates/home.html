@@ -1,0 +1,23 @@
+<!-- templates/home.html --> 
+
+{% extends "layout.html" %}
+
+{% block title %}
+    Home
+{% endblock %}
+
+{% block head %}
+    <script>
+        socket.on("connect", () => {
+            console.log(socket.connected); // true
+        });
+
+        socket.on("disconnect", () => {
+            console.log(socket.connected); // false
+        });
+    </script>
+{% endblock %}
+
+{% block body %}
+    <h1>Home</h1>
+{% endblock %}
