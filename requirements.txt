@@ -30,7 +30,7 @@ python-utils==2.4.0
 pytz==2020.1
 requests==2.21.0
 sqlparse==0.4.2
-starkbank-ecdsa==1.1.0
+starkbank-ecdsa==2.0.1
 stevedore==3.3.0
 toml==0.10.2
 ujson==4.0.1
