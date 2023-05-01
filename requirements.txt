@@ -1,4 +1,4 @@
-Flask==1.1.2
+Flask==2.3.2
 Flask-SocketIO==5.0.1
 idna==2.8
 imagesize==1.2.0
