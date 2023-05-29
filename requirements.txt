@@ -28,7 +28,7 @@ python-language-server==0.36.1
 python-socketio==5.0.4
 python-utils==2.4.0
 pytz==2020.1
-requests==2.21.0
+requests==2.31.0
 sqlparse==0.4.2
 starkbank-ecdsa==2.0.1
 stevedore==3.3.0
