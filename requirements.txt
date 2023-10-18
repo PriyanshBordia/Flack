@@ -35,7 +35,7 @@ stevedore==3.3.0
 toml==0.10.2
 ujson==5.4.0
 Unidecode==1.1.1
-urllib3==1.26.5
+urllib3==1.26.18
 virtualenvwrapper==4.8.4
 Werkzeug==2.2.3
 wrapt==1.12.1
